@@ -16,8 +16,7 @@
 */
 
 #include <stdio.h>
-
-typedef enum { false, true } boolean;
+#include "csharpsetproblem.h"
 
 // initialize a boolean array with 100 elements so that each element = false
 boolean* initializeSet (boolean* arr) {
