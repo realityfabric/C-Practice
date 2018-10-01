@@ -3,10 +3,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct {
 	int* values;
 	int length;
+	int size;
 } IntArray;
 
 IntArray initializeIntArray (IntArray arr);

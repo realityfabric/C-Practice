@@ -37,6 +37,7 @@ int main () {
 IntArray initializeIntArray (IntArray arr) {
 	arr.values = NULL;
 	arr.length = 0;
+	arr.size = 0;
 
 	return arr;
 }
@@ -44,15 +45,19 @@ IntArray initializeIntArray (IntArray arr) {
 IntArray insertElement (IntArray arr, int value) {
 	// check if array is supposed to have elements in it
 	// if it is supposed to have no elements, make sure that's true
-	if (arr.length == 0) {
+	if (arr.size == 0 || arr.length == 0) {
 		free(arr.values);
+		arr.size = 0;
+		arr.length = 0;
 		arr.values = NULL;
 	}
 
 	if (arr.values == NULL) {
-		arr.values = (int*) malloc(1*sizeof(int));
-	} else if (sizeof(arr.values) / sizeof(int) == arr.length) {
-		arr.values = (int*) realloc(arr.values, (arr.length*2)*sizeof(int));
+		arr.values = malloc(1*sizeof(*(arr.values)));
+		arr.size = 1;
+	} else if (arr.length == arr.size) {
+		arr.values = realloc(arr.values, (arr.size*2)*sizeof(*(arr.values)));
+		arr.size *= 2;
 	}
 
 	arr.values[arr.length++] = value; // add value to end and then increase length by 1
@@ -71,6 +76,8 @@ IntArray deleteElement (IntArray arr, int value) {
 		}
 
 		arr.length--;
+	} else {
+		printf("Value %d was not found. No changes made.\n", value);
 	}
 
 	return arr;
