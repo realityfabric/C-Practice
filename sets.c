@@ -50,9 +50,9 @@ IntArray insertElement (IntArray arr, int value) {
 	}
 
 	if (arr.values == NULL) {
-		arr.values = malloc(1*sizeof(int));
+		arr.values = (int*) malloc(1*sizeof(int));
 	} else if (sizeof(arr.values) / sizeof(int) == arr.length) {
-		arr.values = realloc(arr.values, (arr.length*2)*sizeof(int));
+		arr.values = (int*) realloc(arr.values, (arr.length*2)*sizeof(int));
 	}
 
 	arr.values[arr.length++] = value; // add value to end and then increase length by 1
