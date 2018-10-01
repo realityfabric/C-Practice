@@ -108,11 +108,9 @@ IntArray findUnion (IntArray a, IntArray b) {
 		for (int j = 0; j < b.length; j++) {
 			if (a.values[i] == b.values[j]) {
 				result = insertElement (result, a.values[i]);
-				printf("Element %d added to union\n", a.values[i]);
 				break;
 			}
 		}
-		printf("Next Value in A\n");
 	}
 
 	return result;
