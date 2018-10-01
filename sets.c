@@ -76,6 +76,13 @@ IntArray deleteElement (IntArray arr, int value) {
 		}
 
 		arr.length--;
+
+		// if half the size of the array is greater than the length, reduce size by half
+		double halfSize = size / 2;
+		if (floor(halfSize) == halfSize
+			&& halfSize > arr.length) {
+			arr.values = realloc(arr.values, halfSize*sizeof(*(arr.values)));
+		}
 	} else {
 		printf("Value %d was not found. No changes made.\n", value);
 	}
