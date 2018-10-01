@@ -27,6 +27,10 @@ int main () {
 	printf("Printing C (union set):\n");
 	printIntArray(c);
 
+	a = deleteElement (a, 2);
+	printf("Printing A, with 2 deleted\n");
+	printIntArray(a);
+
 	return 0;
 }
 
@@ -54,6 +58,20 @@ IntArray insertElement (IntArray arr, int value) {
 	arr.values[arr.length++] = value; // add value to end and then increase length by 1
 
 	arr = bubbleSortIntArray(arr);
+
+	return arr;
+}
+
+IntArray deleteElement (IntArray arr, int value) {
+	int index = search (arr, value);
+
+	if (index > -1) {
+		for (int i = index; i < arr.length - 1; i++) {
+			arr.values[i] = arr.values[i + 1];
+		}
+
+		arr.length--;
+	}
 
 	return arr;
 }
@@ -98,4 +116,13 @@ IntArray findUnion (IntArray a, IntArray b) {
 	}
 
 	return result;
+}
+
+int search (IntArray arr, int value) {
+	for (int i = 0; i < arr.length; i++) {
+		if (arr.values[i] == value)
+			return i;
+	}
+
+	return -1;
 }

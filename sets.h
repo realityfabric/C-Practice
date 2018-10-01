@@ -11,8 +11,10 @@ typedef struct {
 
 IntArray initializeIntArray (IntArray arr);
 IntArray insertElement (IntArray arr, int value);
+IntArray deleteElement (IntArray arr, int value);
 IntArray bubbleSortIntArray (IntArray arr);
 void printIntArray ();
 IntArray findUnion (IntArray a, IntArray b);
+int search (IntArray arr, int value);
 
 #endif
